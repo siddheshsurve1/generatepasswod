@@ -5,7 +5,18 @@ import "./App.css";
 function App() {
 
 
+//    const copytoclipboardCase = () => {
+//   if (!password || password.length === 0) return;
 
+//   navigator.clipboard.writeText(password)
+//     .then(() => {
+//       settoastrenderStatus({
+//         status: true,
+//         message: 'Text Copied',
+//         type: 'success'
+//       });
+//     });
+// };
 const passwordInput = useRef(null);
 
 const copytoclipboardCase = () => {
