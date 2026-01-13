@@ -77,81 +77,91 @@ function App() {
   }, [passwordGenerator]);
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-500">
-        <h2 className="text-4xl text-center text-white py-1">
-          Password Generator
-        </h2>
-        <div className="flex shadow-md rounded-lg mb-4 overflow-hidden">
-          <input
-            type="text"
-            id="input_text"
-            readOnly
-            value={password}
-            ref={passwordInput}
-            className="w-full px-3 py-1 focus:outline-none bg-white text-black"
-            placeholder="Password"
-          />
-          <button
-            onClick={handleRefresh}
-            style={{ display: "flex", alignItems: "center" }}
-            className="bg-white text-black cursor-pointer px-2 py-1"
-          >
-            <FaSync style={{ marginRight: "8px" }} />
-          </button>
-          <button
-            className="bg-green-800 text-white py-1 px-2  cursor-pointer"
-            onClick={copytoclipboardCase}
-          >
-            Copy
-          </button>
-        </div>
-        <div>
-          <div className="flex items-center mb-3">
-            <input
-              type="range"
-              min={8}
-              max={20}
-              value={length}
-              className="cursor-pointer"
-              onChange={(e) => {
-                setLength(e.target.value);
-              }}
-            />
-            <label className="ml-2 text-white">Length: {length}</label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              type="checkbox"
-              id="numbers"
-              checked={includeNumbers}
-              onChange={() => setIncludeNumbers((prev) => !prev)}
-            />
-            <label htmlFor="numbers" className="ml-2 text-white">
-              Include Numbers
-            </label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              type="checkbox"
-              id="symbols"
-              checked={includeSymbols}
-              onChange={() => setIncludeSymbols((prev) => !prev)}
-            />
-            <label htmlFor="symbols" className="ml-2 text-white">
-              Include Symbols
-            </label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              type="checkbox"
-              id="uppercase"
-              checked={includecase}
-              onChange={() => setIncludecase((prev) => !prev)}
-            />
-            <label className="ml-2 text-white">First Letter Uppercase</label>
-          </div>
-        </div>
-      </div>
+     <div className="w-full max-w-md mx-auto my-10 p-6 rounded-2xl 
+  bg-white/10 backdrop-blur-lg border border-white/20 
+  shadow-xl text-orange-400">
+
+  <h2 className="text-2xl font-bold text-center text-black mb-6">
+    🔐 Password Generator
+  </h2>
+
+  {/* Password Display */}
+  <div className="flex items-center rounded-xl overflow-hidden shadow-md mb-6">
+    <input
+      type="text"
+      readOnly
+      value={password}
+      ref={passwordInput}
+      placeholder="Generate password"
+      className="flex-1 px-4 py-3 text-black bg-white focus:outline-none"
+    />
+
+    <button
+      onClick={handleRefresh}
+      className="bg-white px-3 py-4 hover:bg-gray-200 transition"
+    >
+      <FaSync className="text-gray-700 hover:rotate-180 transition-transform duration-500" />
+    </button>
+
+    <button
+      onClick={copytoclipboardCase}
+      className="bg-green-700 text-white px-4 py-3 font-semibold 
+      hover:bg-green-600 transition"
+    >
+      Copy
+    </button>
+  </div>
+
+  {/* Length */}
+  <div className="mb-5">
+    <label className="flex justify-between text-black mb-2">
+      <span>Password Length</span>
+      <span className="font-semibold">{length}</span>
+    </label>
+    <input
+      type="range"
+      min={8}
+      max={20}
+      value={length}
+      onChange={(e) => setLength(e.target.value)}
+      className="w-full accent-grey-500 cursor-pointer"
+    />
+  </div>
+
+  {/* Options */}
+  <div className="space-y-4 text-black">
+    <label className="flex items-center gap-3 cursor-pointer">
+      <input
+        type="checkbox"
+        checked={includeNumbers}
+        onChange={() => setIncludeNumbers(prev => !prev)}
+        className="accent-orange-500"
+      />
+      Include Numbers
+    </label>
+
+    <label className="flex items-center gap-3 cursor-pointer">
+      <input
+        type="checkbox"
+        checked={includeSymbols}
+        onChange={() => setIncludeSymbols(prev => !prev)}
+        className="accent-orange-500"
+      />
+      Include Symbols
+    </label>
+
+    <label className="flex items-center gap-3 cursor-pointer">
+      <input
+        type="checkbox"
+        checked={includecase}
+        onChange={() => setIncludecase(prev => !prev)}
+        className="accent-orange-500"
+      />
+      First Letter Uppercase
+    </label>
+  </div>
+</div>
+
     </>
   );
 }
