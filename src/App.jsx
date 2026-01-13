@@ -84,7 +84,7 @@ function App() {
   <h2 className="text-2xl font-bold text-center text-black mb-6">
     🔐 Password Generator
   </h2>
-
+ 
   {/* Password Display */}
   <div className="flex items-center rounded-xl overflow-hidden shadow-md mb-6">
     <input
